@@ -90,6 +90,7 @@ uses
 procedure TMainForm.Button1Click(Sender: TObject);
 var
  _isrun: boolean;
+ _s:string;
 begin
 
 
@@ -144,16 +145,21 @@ begin
                     begin
 
 
+
                       //WinExec(pansichar('taskkill /f /im explorer.exe'),SW_HIDE);
                       //WinExec(pansichar('taskkill /f /im explorer.exe'),SW_HIDE);
                       //WinExec(pansichar('taskkill /f /im explorer.exe'),SW_HIDE);
 
                       //ShellExecute(MainForm.Handle, 'open', pchar( MainForm.Edit_File_Path.Text), nil, nil, SW_SHOWNORMAL);
 
+                      _s:=MainForm.opendialog1.Filter;
+                      MainForm.opendialog1.Filter:='';
+
                       if MainForm.opendialog1.Execute then
                         begin
                           MainForm.Edit_File_Path.Text:=MainForm.opendialog1.FileName
                         end;
+                      MainForm.opendialog1.Filter:=_s;
 
                     end;
 
